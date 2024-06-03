@@ -1,47 +1,52 @@
+/* 设置整个页面的样式 */
 body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
-    position: relative;
-    overflow: hidden;
+    margin: 0; /* 确保页面边距为零 */
+    height: 100vh; /* 设置页面高度为视窗高度 */
+    display: flex; /* 使用弹性布局 */
+    justify-content: center; /* 在主轴上居中对齐 */
+    align-items: center; /* 在侧轴上居中对齐 */
+    background-color: #f0f0f0; /* 设置背景颜色为浅灰色 */
+    position: relative; /* 设置定位为相对定位 */
+    overflow: hidden; /* 隐藏溢出内容 */
 }
 
+/* 设置容器的样式 */
 .container {
-    width: 80%;
-    height: 80%;
-    border: 2px solid #000;
-    position: relative;
+    width: 80%; /* 宽度占父元素80% */
+    height: 80%; /* 高度占父元素80% */
+    border: 2px solid #000; /* 设置边框为2px黑色实线 */
+    position: relative; /* 设置定位为相对定位 */
 }
 
+/* 设置热力图的样式 */
 .heatmap {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+    position: absolute; /* 设置定位为绝对定位 */
+    width: 100%; /* 宽度占父元素100% */
+    height: 100%; /* 高度占父元素100% */
+    pointer-events: none; /* 禁止鼠标事件穿透 */
 }
 
+/* 设置点的样式 */
 .dot {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: rgba(255, 0, 0, 0.3);
-    filter: blur(20px);
-    pointer-events: none;
-    transition: opacity 1s;
+    position: absolute; /* 设置定位为绝对定位 */
+    width: 50px; /* 设置宽度为50像素 */
+    height: 50px; /* 设置高度为50像素 */
+    border-radius: 50%; /* 设置圆角为50%（圆形） */
+    background-color: rgba(255, 0, 0, 0.3); /* 设置背景颜色为红色半透明 */
+    filter: blur(20px); /* 设置模糊滤镜 */
+    pointer-events: none; /* 禁止鼠标事件穿透 */
+    transition: opacity 1s; /* 设置透明度过渡效果为1秒 */
 }
 
+/* 设置坐标显示的样式 */
 .coordinates {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
+    position: fixed; /* 设置定位为固定定位 */
+    bottom: 10px; /* 距离底部10像素 */
+    right: 10px; /* 距离右侧10像素 */
+    background: rgba(0, 0, 0, 0.5); /* 设置背景颜色为黑色半透明 */
+    color: #fff; /* 设置字体颜色为白色 */
+    padding: 5px 10px; /* 设置内边距 */
+    border-radius: 5px; /* 设置圆角为5像素 */
+    font-family: Arial, sans-serif; /* 设置字体 */
+    font-size: 14px; /* 设置字体大小为14像素 */
 }
