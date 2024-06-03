@@ -1,4 +1,4 @@
-//18.01 初版定稿 鼠标识别 改动测试
+//2024.6.3 热度图完工
 
 let isMoving = false; // 用于跟踪鼠标是否在移动
 let lastMoveTime = Date.now(); // 记录上一次鼠标移动的时间
@@ -70,3 +70,52 @@ setInterval(() => {
     }
     isMoving = false; // 重置鼠标移动状态
 }, 100);
+
+// 生成随机二维矩阵函数
+function generateRandomMatrix(rows, cols) {
+    let matrix = [];
+    for (let i = 0; i < rows; i++) {
+        let row = [];
+        for (let j = 0; j < cols; j++) {
+            row.push(Math.random());
+        }
+        matrix.push(row);
+    }
+    return matrix;
+}
+
+// 根据矩阵数据生成热度图函数
+function drawHeatmap(matrix) {
+    const overlay = document.querySelector('.overlay');
+    const containerWidth = overlay.clientWidth;
+    const containerHeight = overlay.clientHeight;
+    const rows = matrix.length;
+    const cols = matrix[0].length;
+    const cellWidth = containerWidth / cols;
+    const cellHeight = containerHeight / rows;
+
+    // 清空 overlay 的内容
+    overlay.innerHTML = '';
+
+    // 创建热度图
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            const intensity = matrix[i][j];
+            const color = `rgba(255, 0, 0, ${intensity * 0.3})`; // 透明度为30%
+            const cell = document.createElement('div');
+            cell.style.position = 'absolute';
+            cell.style.left = `${j * cellWidth}px`;
+            cell.style.top = `${i * cellHeight}px`;
+            cell.style.width = `${cellWidth}px`;
+            cell.style.height = `${cellHeight}px`;
+            cell.style.backgroundColor = color;
+            overlay.appendChild(cell);
+        }
+    }
+}
+
+// 每半秒生成一个新的随机矩阵并绘制热度图
+setInterval(() => {
+    const randomMatrix = generateRandomMatrix(100, 200);
+    drawHeatmap(randomMatrix);
+}, 500);
