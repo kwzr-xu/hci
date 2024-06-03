@@ -1,4 +1,4 @@
-//18.01 初版定稿 鼠标识别
+//18.01 初版定稿 鼠标识别 改动测试
 
 let isMoving = false; // 用于跟踪鼠标是否在移动
 let lastMoveTime = Date.now(); // 记录上一次鼠标移动的时间
