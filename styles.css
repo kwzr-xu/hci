@@ -18,6 +18,15 @@ body {
     position: relative; /* 设置定位为相对定位 */
 }
 
+.overlay {
+    position: absolute; /* 设置定位为绝对定位 */
+    width: 100%; /* 宽度占父元素100% */
+    height: 100%; /* 高度占父元素100% */
+    background-color: rgba(0, 0, 0, 0.3); /* 设置背景颜色为黑色，透明度为30% */
+    pointer-events: none; /* 禁止鼠标事件穿透 */
+    z-index: 0; /* 设置层级为1，确保其在热力图之上 */
+}
+
 /* 设置热力图的样式 */
 .heatmap {
     position: absolute; /* 设置定位为绝对定位 */
