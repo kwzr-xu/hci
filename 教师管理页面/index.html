@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线课程</title>
+    <link rel="stylesheet" href="styles.css"> <!-- 引入CSS文件 -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>在线课程</h1>
+        </header>
+
+        <div class="course-grid">
+            <div class="course-card">
+                <img src="image1.jpg" alt="课程1">
+                <h3>课程标题1</h3>
+                <p>课程描述1。简要介绍课程内容和目标。</p>
+                <button>观看</button>
+            </div>
+            <div class="course-card">
+                <img src="image2.jpg" alt="课程2">
+                <h3>课程标题2</h3>
+                <p>课程描述2。简要介绍课程内容和目标。</p>
+                <button>观看</button>
+            </div>
+            <div class="course-card">
+                <img src="image3.jpg" alt="课程3">
+                <h3>课程标题3</h3>
+                <p>课程描述3。简要介绍课程内容和目标。</p>
+                <button>观看</button>
+            </div>
+            <div class="course-card">
+                <img src="image4.jpg" alt="课程4">
+                <h3>课程标题4</h3>
+                <p>课程描述4。简要介绍课程内容和目标。</p>
+                <button>观看</button>
+            </div>
+            <div class="course-card">
+                <img src="image5.jpg" alt="课程5">
+                <h3>课程标题5</h3>
+                <p>课程描述5。简要介绍课程内容和目标。</p>
+                <button>观看</button>
+            </div>
+            <div class="course-card">
+                <img src="image6.jpg" alt="课程6">
+                <h3>课程标题6</h3>
+                <p>课程描述6。简要介绍课程内容和目标。</p>
+                <button>观看</button>
+            </div>
+            <div class="new-course-card">
+                <button>新建课程</button>
+            </div>
+        </div>
+
+        <div>
+            <button onclick="showChart()">显示折线图</button>
+        </div>
+        <div id="chart-container">
+            <canvas id="line-chart"></canvas>
+        </div>
+    </div>
+
+    <!-- 引入Chart.js库 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts.js"></script> <!-- 引入JavaScript文件 -->
+</body>
+</html>

@@ -1,0 +1,104 @@
+/* 样式文件 */
+
+/* 设置网页整体的字体、背景颜色和文字颜色 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff8dc; /* 米黄色背景 */
+    margin: 0;
+    padding: 0;
+    color: #333; /* 适合米黄色背景的深色文字 */
+}
+
+/* 设置页面内容的宽度和内边距 */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 设置页眉样式，包括背景颜色、文字颜色和圆角 */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 15px;
+}
+
+/* 设置课程网格的样式，使用CSS网格布局 */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* 设置课程卡片和新建课程卡片的样式，包括背景颜色、圆角和阴影 */
+.course-card, .new-course-card {
+    background: #ffffff; /* 固定背景色 */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* 设置课程卡片中图片的样式，包括宽度和边框 */
+.course-card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #007BFF;
+}
+
+/* 设置课程标题和描述的样式 */
+.course-card h3, .new-course-card h3 {
+    margin: 10px 0;
+    color: #333;
+}
+.course-card p, .new-course-card p {
+    padding: 0 20px;
+    color: #666;
+}
+
+/* 设置按钮的样式，包括背景颜色、文字颜色、边框和圆角 */
+.course-card button, .new-course-card button {
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* 设置按钮在悬停时的背景颜色 */
+.course-card button:hover, .new-course-card button:hover {
+    background-color: #FFD700;
+}
+
+/* 设置新建课程卡片的对齐方式 */
+.new-course-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 设置新建课程按钮的样式，包括宽度、内边距和字体大小 */
+.new-course-card button {
+    width: 80%;
+    padding: 20px;
+    font-size: 18px;
+}
+
+/* 设置图表容器的样式，包括宽度和上边距 */
+#chart-container {
+    width: 100%;
+    margin-top: 50px;
+    display: none;
+}
+
+/* 设置折线图的宽度和高度 */
+#line-chart {
+    width: 100%;
+    height: 400px;
+}

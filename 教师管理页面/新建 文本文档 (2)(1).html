@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线课程</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8dc; /* 米黄色背景 */
+            margin: 0;
+            padding: 0;
+            color: #333; /* 适合米黄色背景的深色文字 */
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 15px;
+        }
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .course-card, .new-course-card {
+            background: #ffffff; /* 固定背景色 */
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .course-card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #007BFF;
+        }
+        .course-card h3, .new-course-card h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+        .course-card p, .new-course-card p {
+            padding: 0 20px;
+            color: #666;
+        }
+        .course-card button, .new-course-card button {
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .course-card button:hover, .new-course-card button:hover {
+            background-color: #FFD700;
+        }
+        .new-course-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .new-course-card button {
+            width: 80%;
+            padding: 20px;
+            font-size: 18px;
+        }
+        #chart-container {
+            width: 100%;
+            margin-top: 50px;
+            display: none;
+        }
+        #line-chart {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>在线课程</h1>
+    </header>
+
+    <div class="course-grid">
+        <div class="course-card">
+            <img src="image1.jpg" alt="课程1">
+            <h3>课程标题1</h3>
+            <p>课程描述1。简要介绍课程内容和目标。</p>
+            <button>观看</button>
+        </div>
+        <div class="course-card">
+            <img src="image2.jpg" alt="课程2">
+            <h3>课程标题2</h3>
+            <p>课程描述2。简要介绍课程内容和目标。</p>
+            <button>观看</button>
+        </div>
+        <div class="course-card">
+            <img src="image3.jpg" alt="课程3">
+            <h3>课程标题3</h3>
+            <p>课程描述3。简要介绍课程内容和目标。</p>
+            <button>观看</button>
+        </div>
+        <div class="course-card">
+            <img src="image4.jpg" alt="课程4">
+            <h3>课程标题4</h3>
+            <p>课程描述4。简要介绍课程内容和目标。</p>
+            <button>观看</button>
+        </div>
+        <div class="course-card">
+            <img src="image5.jpg" alt="课程5">
+            <h3>课程标题5</h3>
+            <p>课程描述5。简要介绍课程内容和目标。</p>
+            <button>观看</button>
+        </div>
+        <div class="course-card">
+            <img src="image6.jpg" alt="课程6">
+            <h3>课程标题6</h3>
+            <p>课程描述6。简要介绍课程内容和目标。</p>
+            <button>观看</button>
+        </div>
+        <div class="new-course-card">
+            <button>新建课程</button>
+        </div>
+    </div>
+
+    <div>
+        <button onclick="showChart()">显示折线图</button>
+    </div>
+    <div id="chart-container">
+        <canvas id="line-chart"></canvas>
+    </div>
+</div>
+
+<!-- 引入Chart.js库 -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    function showChart() {
+        document.getElementById('chart-container').style.display = 'block';
+        const ctx = document.getElementById('line-chart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Sample Data',
+                    data: [0, 10, 5, 2, 20, 30, 45],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                animation: {
+                    duration: 2000, // 动画持续时间
+                    easing: 'easeInOutQuad' // 动画效果
+                },
+                scales: {
+                    x: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Month'
+                        }
+                    },
+                    y: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Value'
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
