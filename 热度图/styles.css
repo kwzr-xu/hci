@@ -69,3 +69,19 @@ body {
     font-family: Arial, sans-serif; /* 设置字体 */
     font-size: 14px; /* 设置字体大小为14像素 */
 }
+
+/* 设置点数据显示的样式 */
+.point-data {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    width: 200px;
+    height: 300px;
+    overflow-y: auto;
+}

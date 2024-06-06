@@ -47,21 +47,48 @@ function updateCoordinates(x, y) {
 
 // 初始化 simpleheat
 const canvas = document.getElementById('heatmapCanvas');
+const overlay = document.querySelector('.overlay');
 const heat = simpleheat(canvas);
 
-function drawHeatmap(matrix) {
-    const containerRect = document.querySelector('.container').getBoundingClientRect();
-    const width = containerRect.width;
-    const height = containerRect.height;
-    const data = matrix.map(([x, y]) => [x * width, y * height, 1]);
-    heat.data(data).max(1).draw(0.05);
+// 调整 canvas 大小以匹配 overlay
+function resizeCanvas() {
+    canvas.width = overlay.clientWidth;
+    canvas.height = overlay.clientHeight;
+    heat.resize(); // 通知 simpleheat 调整大小
 }
 
-// 每半秒生成一个新的随机矩阵并绘制热度图
-setInterval(() => {
-    const matrix = generateRandomMatrix();
-    drawHeatmap(matrix);
-}, 5000);
+// 调整 canvas 大小
+resizeCanvas();
+
+// 窗口调整大小时重新调整 canvas 大小
+window.addEventListener('resize', resizeCanvas);
+
+function drawHeatmap(matrix) {
+    // 获取 overlay 容器的宽度和高度
+    const width = canvas.width;
+    const height = canvas.height;
+    
+    // 将相对坐标转换为绝对坐标
+    const data = matrix.map(([x, y]) => [x * width, y * height, 1]);
+    
+    // 设置 heatmap 的数据，并设置最大值为 1
+    heat.data(data).max(1);
+
+    // 设置半径和模糊半径
+    heat.radius(60, 40); // 半径为20，模糊半径为15
+
+    // 设置渐变色
+    heat.gradient({
+        0.4: 'blue',
+        0.6: 'cyan',
+        0.7: 'lime',
+        0.8: 'yellow',
+        1.0: 'red'
+    });
+
+    // 绘制热力图
+    heat.draw(0.05);
+}
 
 // 生成随机热度图数据来源
 function generateRandomMatrix() {
@@ -74,3 +101,24 @@ function generateRandomMatrix() {
     }
     return data;
 }
+
+// 显示点数据函数
+function displayPointData(data) {
+    const pointData = document.getElementById('pointData');
+    pointData.innerHTML = ''; // 清空当前内容
+    data.forEach(point => {
+        const p = document.createElement('p');
+        p.textContent = `X: ${point[0].toFixed(3)}, Y: ${point[1].toFixed(3)}`;
+        pointData.appendChild(p);
+    });
+}
+
+// 每半秒生成一个新的随机矩阵并绘制热度图
+setInterval(() => {
+    const matrix = generateRandomMatrix();
+    drawHeatmap(matrix);
+    displayPointData(matrix); // 添加显示点数据函数
+}, 5000);
+
+
+
