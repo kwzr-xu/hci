@@ -45,77 +45,32 @@ function updateCoordinates(x, y) {
     coordinates.textContent = `X: ${x}, Y: ${y}`; // 更新坐标显示内容
 }
 
-// 每 100 毫秒检查一次鼠标是否停止移动
-setInterval(() => {
-    if (!isMoving && Date.now() - lastMoveTime > 100) { // 如果鼠标未移动且上次移动时间超过 100 毫秒
-        const heatmap = document.querySelector('.heatmap'); // 获取热度图容器
-        const lastDot = heatmap.querySelector('.dot:last-child'); // 获取最后一个热度点
+// 初始化 simpleheat
+const canvas = document.getElementById('heatmapCanvas');
+const heat = simpleheat(canvas);
 
-        if (lastDot) {
-            const rect = lastDot.getBoundingClientRect(); // 获取最后一个热度点的边界矩形
-            const containerRect = document.querySelector('.container').getBoundingClientRect(); // 获取容器的边界矩形
-
-            // 检查最后一个热度点是否在容器内
-            if (rect.left >= containerRect.left && rect.right <= containerRect.right &&
-                rect.top >= containerRect.top && rect.bottom <= containerRect.bottom) {
-                
-                // 计算热度点相对于容器的中心坐标
-                const x = rect.left - containerRect.left + 23;
-                const y = rect.top - containerRect.top + 23;
-
-                createHeatmapDot(x, y); // 创建新的热度点
-                updateCoordinates(x, y); // 更新坐标显示
-            }
-        }
-    }
-    isMoving = false; // 重置鼠标移动状态
-}, 100);
-
-// 生成随机二维矩阵函数
-function generateRandomMatrix(rows, cols) {
-    let matrix = [];
-    for (let i = 0; i < rows; i++) {
-        let row = [];
-        for (let j = 0; j < cols; j++) {
-            row.push(Math.random());
-        }
-        matrix.push(row);
-    }
-    return matrix;
-}
-
-// 根据矩阵数据生成热度图函数
 function drawHeatmap(matrix) {
-    const overlay = document.querySelector('.overlay');
-    const containerWidth = overlay.clientWidth;
-    const containerHeight = overlay.clientHeight;
-    const rows = matrix.length;
-    const cols = matrix[0].length;
-    const cellWidth = containerWidth / cols;
-    const cellHeight = containerHeight / rows;
-
-    // 清空 overlay 的内容
-    overlay.innerHTML = '';
-
-    // 创建热度图
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < cols; j++) {
-            const intensity = matrix[i][j];
-            const color = `rgba(255, 0, 0, ${intensity * 0.3})`; // 透明度为30%
-            const cell = document.createElement('div');
-            cell.style.position = 'absolute';
-            cell.style.left = `${j * cellWidth}px`;
-            cell.style.top = `${i * cellHeight}px`;
-            cell.style.width = `${cellWidth}px`;
-            cell.style.height = `${cellHeight}px`;
-            cell.style.backgroundColor = color;
-            overlay.appendChild(cell);
-        }
-    }
+    const containerRect = document.querySelector('.container').getBoundingClientRect();
+    const width = containerRect.width;
+    const height = containerRect.height;
+    const data = matrix.map(([x, y]) => [x * width, y * height, 1]);
+    heat.data(data).max(1).draw(0.05);
 }
 
 // 每半秒生成一个新的随机矩阵并绘制热度图
 setInterval(() => {
-    const randomMatrix = generateRandomMatrix(100, 200);
-    drawHeatmap(randomMatrix);
-}, 500);
+    const matrix = generateRandomMatrix();
+    drawHeatmap(matrix);
+}, 5000);
+
+// 生成随机热度图数据来源
+function generateRandomMatrix() {
+    let data = [];
+    let numPoints = Math.floor(Math.random() * 6) + 20; // 随机生成20到25之间的数字
+    for (let i = 0; i < numPoints; i++) {
+        let x = Math.random();
+        let y = Math.random();
+        data.push([x, y]);
+    }
+    return data;
+}

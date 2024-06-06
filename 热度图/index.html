@@ -10,13 +10,15 @@
     <!-- 定义包含热力图的容器 -->
     <div class="container">
          <!-- 新增容器 -->
-        <div class="overlay"></div>
+        <div class="overlay">
+            <canvas id="heatmapCanvas"></canvas>
+        </div>
         <div class="heatmap"></div> <!-- 热力图 -->
     </div>
 
     <!-- 显示鼠标坐标的容器 -->
     <div class="coordinates" id="coordinates"></div>
-
+    <script src="simpleheat.js"></script>
     <!-- 引入JavaScript文件 -->
     <script src="script.js"></script>
 </body>

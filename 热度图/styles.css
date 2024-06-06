@@ -27,6 +27,16 @@ body {
     z-index: 0; /* 设置层级为1，确保其在热力图之上 */
 }
 
+.overlay canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+
 /* 设置热力图的样式 */
 .heatmap {
     position: absolute; /* 设置定位为绝对定位 */
