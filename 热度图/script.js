@@ -45,6 +45,18 @@ function updateCoordinates(x, y) {
     coordinates.textContent = `X: ${x}, Y: ${y}`; // 更新坐标显示内容
 }
 
+
+
+
+
+
+
+
+
+
+//热度图渲染
+
+
 // 初始化 simpleheat
 const canvas = document.getElementById('heatmapCanvas');
 const overlay = document.querySelector('.overlay');
@@ -93,7 +105,7 @@ function drawHeatmap(matrix) {
 // 生成随机热度图数据来源
 function generateRandomMatrix() {
     let data = [];
-    let numPoints = Math.floor(Math.random() * 6) + 20; // 随机生成20到25之间的数字
+    let numPoints = Math.floor(Math.random() * 6)+ 20 ; // 随机生成20到25之间的数字
     for (let i = 0; i < numPoints; i++) {
         let x = Math.random();
         let y = Math.random();
@@ -120,5 +132,5 @@ setInterval(() => {
     displayPointData(matrix); // 添加显示点数据函数
 }, 5000);
 
-
+//每五秒刷新一次 便于观察
 
